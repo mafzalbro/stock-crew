@@ -1,1 +1,0 @@
-{"version":3,"file":"stock.module.js","sourceRoot":"","sources":["../../../src/stock/stock.module.ts"],"names":[],"mappings":";;;;;;;;;AAAA,2CAAwC;AACxC,mDAA+C;AAC/C,mDAAoD;AACpD,2DAAwD;AAMjD,IAAM,WAAW,GAAjB,MAAM,WAAW;CAAG,CAAA;AAAd,kCAAW;sBAAX,WAAW;IAJvB,IAAA,eAAM,EAAC;QACN,OAAO,EAAE,CAAC,4BAAY,CAAC;QACvB,SAAS,EAAE,CAAC,4BAAY,EAAE,iCAAiB,CAAC;KAC7C,CAAC;GACW,WAAW,CAAG"}
