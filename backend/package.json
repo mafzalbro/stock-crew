@@ -7,10 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-<<<<<<< HEAD
     "seed": "node .",
-=======
->>>>>>> 3a6554de1ab0d827f98bcf9687971272ebc02f1a
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
