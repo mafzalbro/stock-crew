@@ -41,11 +41,11 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="p-6">
+    <div className="sm:p-6 p-4">
       <h1 className="text-2xl font-bold">📦 Portfolio</h1>
 
       {/* Real-Time Stock Prices Section */}
-      <div className="border border-gray-900 my-10 rounded-lg p-8 min-h-40">
+      <div className="border border-gray-900 my-10 rounded-lg sm:p-8 min-h-40">
         <div className="mb-6">
           <ButtonLink href="/dashboard" className="inline-flex">
             <FiChevronLeft /> Back To Dashboard
@@ -54,13 +54,13 @@ export default function Portfolio() {
         <span className="text-blue-500">Real-Time</span>
         <h2 className="text-3xl">Stock Prices</h2>
 
-        <ul className="flex justify-evenly items-center flex-wrap gap-2 my-10">
+        <ul className="flex sm:justify-evenly sm:items-center flex-wrap gap-2 my-10">
           {loadingPrices ? (
             // Skeleton for stock prices
             Array.from({ length: 5 }).map((_, index) => (
               <div
                 key={index}
-                className="w-1/4 bg-gray-800 animate-pulse h-24 rounded-3xl"
+                className="sm:w-1/4 w-full bg-gray-800 animate-pulse h-24 rounded-3xl"
               ></div>
             ))
           ) : Object.keys(prices).length > 0 ? (
@@ -98,7 +98,10 @@ export default function Portfolio() {
               className="relative group !transition-all duration-1000"
             >
               <FiChevronRight className="absolute bottom-4 right-4 hidden group-hover:block scale-60 group-hover:scale-110" />
-              <PortfolioCard title={stock.name} value={`$${stock.value?.toFixed(2)}`} />
+              <PortfolioCard
+                title={stock.name}
+                value={`$${stock.value?.toFixed(2)}`}
+              />
             </Link>
           ))}
         </div>
