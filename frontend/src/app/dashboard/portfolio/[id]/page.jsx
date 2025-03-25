@@ -72,20 +72,24 @@ export default function PortfolioDetails() {
         Portfolio Name:
         <span className="font-bold ml-2">{portfolio.name}</span>
       </h1>
-      <div className="mt-4 flex items-center justify-evenly gap-2 mx-auto">
+      <div className="mt-4 flex items-center justify-evenly flex-wrap gap-2 mx-auto">
         <PortfolioCard
+        className={'w-full sm:w-auto'}
           title="Total Investment"
           value={`$${portfolio.totalInvestment?.toFixed(2)}`}
         />
         <PortfolioCard
+        className={'w-full sm:w-auto'}
           title="Total Profit or Loss"
           value={`$${portfolio.profitOrLoss?.toFixed(2)}`}
         />
         <PortfolioCard
+        className={'w-full sm:w-auto'}
           title="Total Profit or Loss In Percentage"
           value={`${portfolio.profitOrLossPercentage?.toFixed(2)}%`}
         />
         <PortfolioCard
+        className={'w-full sm:w-auto'}
           title="Portfolio Value"
           value={`${portfolio.totalCurrentValue?.toFixed(2)}`}
         />

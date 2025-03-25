@@ -1,32 +1,36 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { calculatePortfolioMetrics } from "@/utils/calculatePortfolioMetrics";
+// import { calculatePortfolioMetrics } from "@/utils/calculatePortfolioMetrics";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const [portfolioMetrics, setPortfolioMetrics] = useState([]);
+  // const [portfolioMetrics, setPortfolioMetrics] = useState([]);
   const router = useRouter();
-  
+
   useEffect(() => {
     router.push("/dashboard");
-    axios
-      .get("http://localhost:3001/portfolio")
-      .then((res) => {
-        const portfolioData = res.data[0];
-        const metrics = calculatePortfolioMetrics(portfolioData);
+    // axios
+    //   .get("http://localhost:3001/portfolio")
+    //   .then((res) => {
+    //     const portfolioData = res.data[0];
+    //     const metrics = calculatePortfolioMetrics(portfolioData);
 
-        setPortfolioMetrics(metrics || []);
-      })
-      .catch((error) => {
-        console.error("Error fetching portfolio data:", error);
-      });
-  }, []);
+    //     setPortfolioMetrics(metrics || []);
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching portfolio data:", error);
+    //   });
+  }, [router]);
 
-  console.log(portfolioMetrics);
+  // console.log(portfolioMetrics);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-10">
+    <>
+      <div className="min-h-screen bg-gray-900 text-white p-10 flex justify-center items-center">
+        Loading...
+      </div>
+      {/* <div className="min-h-screen bg-gray-900 text-white p-10">
       <h1 className="text-4xl font-bold mb-4">📊 Portfolio Summary</h1>
       <table className="w-full border border-gray-700">
         <thead className="bg-gray-800">
@@ -52,6 +56,7 @@ export default function Home() {
           ))}
         </tbody>
       </table>
-    </div>
+    </div> */}
+    </>
   );
 }

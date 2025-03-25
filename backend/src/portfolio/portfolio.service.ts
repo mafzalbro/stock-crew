@@ -27,31 +27,44 @@ export class PortfolioService {
   //   return portfoliosWithMetrics;
   // }
 
+  // async getPortfolioById(portfolioId: number) {
+  //   const summary = await this.getPortfolioSummary(portfolioId);
+  //   const portfolio = await this.prisma.portfolio.findUnique({
+  //     where: { id: portfolioId },
+  //     include: { trades: true },
+  //   });
+  //   return { ...portfolio, ...summary };
+  // }
+
   async getAllPortfolios() {
-    const portfolios = await this.prisma.portfolio.findMany({
-      // include: { trades: true },
-    });
-
-    const portfoliosWithSummary: any[] = [];
-    for (const portfolio of portfolios) {
-      const summary = await this.getPortfolioSummary(portfolio.id);
-      portfoliosWithSummary.push({
-        ...portfolio,
-        value: summary.totalCurrentValue,
-        ...summary,
-      });
-    }
-
-    return portfoliosWithSummary;
+    const portfolios = await this.prisma.portfolio.findMany();
+    return portfolios.map((portfolio) => ({
+      ...portfolio,
+      value: this.generateDummySummary().totalCurrentValue,
+      ...this.generateDummySummary(),
+    }));
   }
 
   async getPortfolioById(portfolioId: number) {
-    const summary = await this.getPortfolioSummary(portfolioId);
     const portfolio = await this.prisma.portfolio.findUnique({
       where: { id: portfolioId },
       include: { trades: true },
     });
-    return { ...portfolio, ...summary };
+    return { ...portfolio, ...this.generateDummySummary() };
+  }
+
+  private generateDummySummary() {
+    const totalInvestment = Math.random() * 10000;
+    const totalCurrentValue = totalInvestment * (0.9 + Math.random() * 0.2);
+    const profitOrLoss = totalCurrentValue - totalInvestment;
+    const profitOrLossPercentage = (profitOrLoss / totalInvestment) * 100;
+
+    return {
+      totalInvestment,
+      totalCurrentValue,
+      profitOrLoss,
+      profitOrLossPercentage,
+    };
   }
 
   async getPortfolioSummary(portfolioId: number) {

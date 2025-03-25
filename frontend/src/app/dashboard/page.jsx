@@ -35,11 +35,11 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           <PortfolioCard
             title="💰 Total Investment"
-            value={`$${metrics.totalInvestment}`}
+            value={`$${metrics.totalInvestment?.toFixed(2)}`}
           />
           <PortfolioCard
             title="📊 Total Profit"
-            value={`$${metrics.totalProfit}`}
+            value={`$${metrics.totalProfit?.toFixed(2)}`}
           />
           <PortfolioCard
             title="📉 Performance"

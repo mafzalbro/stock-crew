@@ -69,7 +69,7 @@ export default function Portfolio() {
                 className="w-1/4 bg-transparent"
                 key={symbol}
                 title={symbol}
-                value={price.toFixed(2)}
+                value={price?.toFixed(2)}
               />
             ))
           ) : (
@@ -98,7 +98,7 @@ export default function Portfolio() {
               className="relative group !transition-all duration-1000"
             >
               <FiChevronRight className="absolute bottom-4 right-4 hidden group-hover:block scale-60 group-hover:scale-110" />
-              <PortfolioCard title={stock.name} value={`$${stock.value}`} />
+              <PortfolioCard title={stock.name} value={`$${stock.value?.toFixed(2)}`} />
             </Link>
           ))}
         </div>
